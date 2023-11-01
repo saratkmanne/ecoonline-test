@@ -13,19 +13,18 @@ jobs:
         containers: [1]
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
       - name: Cypress run
-        uses: cypress-io/github-action@v5
+        uses: cypress-io/github-action@v6
         with:
           # Specify Browser since container image is compile with Firefox
           start: npm start:ci
           browser: chrome
-          record: true
+          record: false
           parallel: true
           spec: cypress/e2e/*
-        env:
-          CYPRESS_RECORD_KEY: "fffd4c32-7f38-4ef6-a182-f5ce7636d803"
+
 
