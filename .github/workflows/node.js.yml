@@ -1,30 +1,22 @@
-name: Cypress Tests using Cypress Docker Image
-
-on: [push]
-
+name: Cypress Tests
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 jobs:
-  cypress-run:
+  test:
+    timeout-minutes: 60
     runs-on: ubuntu-latest
-    container: cypress/browsers:node16.16.0-chrome107-ff107-edge
-    strategy:
-      fail-fast: false
-      matrix:
-        # run copies of the current job in parallel
-        containers: [1]
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      # Install NPM dependencies, cache them correctly
-      # and run all Cypress tests
-      - name: Cypress run
-        uses: cypress-io/github-action@v6
-        with:
-          # Specify Browser since container image is compile with Firefox
-          start: npm start:ci
-          browser: chrome
-          record: false
-          parallel: true
-          spec: cypress/e2e/*
-
-
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 18
+    - name: Install dependencies
+      run: npm ci
+    - name: Install deps
+      run: npm install
+    - name: Run Cypress tests
+      run: npm run test-chrome
+    
