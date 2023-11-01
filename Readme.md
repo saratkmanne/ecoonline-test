@@ -11,7 +11,7 @@ Before running the Cypress tests, ensure have the following dependencies install
 1. Clone this repository:
 
    ```bash
-   git clone https://github.com/your-username/your-cypress-examples.git
+   git clone https://github.com/saratkmanne/ecoonline-test.git
 
    ```
 
@@ -42,3 +42,5 @@ npx cypress test
 ```
   go to cypress/reports folder for generated reports
 ```
+
+# Added github actions pipeline workflow for CICD tests
