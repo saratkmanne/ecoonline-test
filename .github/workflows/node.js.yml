@@ -18,7 +18,7 @@ jobs:
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
       - name: Cypress run
-        uses: cypress-io/github-action@v5.x.x
+        uses: cypress-io/github-action@v5
         with:
           # Specify Browser since container image is compile with Firefox
           start: npm start:ci
@@ -26,7 +26,6 @@ jobs:
           record: true
           parallel: true
           spec: cypress/e2e/*
-          #build: npm run cypress run -s 'cypress/e2e/day2-specs/**.spec.cy.js'"
         env:
           CYPRESS_RECORD_KEY: "fffd4c32-7f38-4ef6-a182-f5ce7636d803"
 
