@@ -21,6 +21,7 @@ jobs:
         uses: cypress-io/github-action@v5
         with:
           # Specify Browser 
+          start: npm start:ci
           browser: chrome
           record: true
           parallel: true
