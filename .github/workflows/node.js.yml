@@ -5,27 +5,28 @@ on: [push]
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
-    container: cypress/browsers:node12.18.3-chrome87-ff82
+    container: cypress/browsers:node16.16.0-chrome107-ff107-edge
     strategy:
       fail-fast: false
       matrix:
         # run copies of the current job in parallel
-        containers: [1, 2, 3, 4]
+        containers: [1]
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
-      - name: "Cypress chrome tests"
-        uses: cypress-io/github-action@v5
+      - name: Cypress run
+        uses: cypress-io/github-action@v5.x.x
         with:
-          # Specify Browser 
+          # Specify Browser since container image is compile with Firefox
           start: npm start:ci
           browser: chrome
           record: true
           parallel: true
-          spec: cypress/e2e/*.spec.cy.js
+          spec: cypress/e2e/*
+          #build: npm run cypress run -s 'cypress/e2e/day2-specs/**.spec.cy.js'"
         env:
-          CYPRESS_RECORD_KEY: "7e729887-97ff-49c6-bd17-2680d3b67ec1"
-      
+          CYPRESS_RECORD_KEY: "fffd4c32-7f38-4ef6-a182-f5ce7636d803"
+
