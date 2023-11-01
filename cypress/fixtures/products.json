@@ -1,0 +1,9 @@
+{
+  "product": "MacBook",
+  "computername": "Lenovo",
+  "introduced": "2023-10-01",
+  "discontinued": "2023-11-30",
+  "company": "Apple Inc.",
+  "updatedComputerName": "Lenovo Updated Computer",
+  "deletedComputerName": "ASCI Red"
+}
