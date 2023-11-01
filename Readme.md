@@ -28,12 +28,14 @@ npm install
 4. To open testrunner, run the following command
 
 ```
-npx cypress test
+npx cypress open
+& execute spec file
 ```
 
 5. To use runmode, run the following command
 
 ```
+ open terminal
  npm run test-chrome
 ```
 
